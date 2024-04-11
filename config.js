@@ -1,12 +1,12 @@
 const fs = require("fs")
 
-global.owner = ["628980125500"]
+global.owner = ["628xxxxxx"]
 
 //watermark 
 global.packname = 'Di Buat Oleh'
 global.author = 'Neko Bot'
-global.idcennel = '120363230204107751@newsletter'
-global.thumb = 'https://telegra.ph/file/c78394112c198d4b946b0.jpg'
+global.idcennel = '<id_saluran>@newsletter'
+global.thumb = 'Linknya' // Your Thumbnail
 
 global.mess = {
     success: 'Dona Abangku 🔥',
