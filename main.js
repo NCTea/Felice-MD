@@ -26,7 +26,7 @@ async function start() {
         logger: pino({ level: "silent" }),
         printQRInTerminal: false,
         auth: state,
-        browser: [ 'Mac OS', 'Safari', '10.15.7' ]
+        browser: ['Mac OS', 'Safari', '10.15.7']
     });
 
     if (!fell.authState.creds.registered) {
