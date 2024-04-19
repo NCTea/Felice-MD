@@ -31,10 +31,8 @@ async function start() {
 
     if (!fell.authState.creds.registered) {
         const phoneNumber = await question('Input Number Start With Code Cuntry 62xxxx :\n');
-        // console.log(phoneNumber);
         let code = await fell.requestPairingCode(phoneNumber);
         code = code?.match(/.{1,4}/g)?.join("-") || code;
-        // console.log(code);
         console.log(`𝑻𝑯𝑰𝑺 𝑼𝑹 𝑪𝑶𝑫𝑬 :`, code);
     }
 

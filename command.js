@@ -1,14 +1,8 @@
 require("./config.js")
 const fs = require("fs")
-const axios = require("axios")
-const { exec, spawn, execSync } = require("child_process")
-const fetch = require("node-fetch")
 
 const {
     getGroupAdmins,
-    jsonformat,
-    generateProfilePicture,
-    getBuffer
 } = require("./lib/library.js")
 
 module.exports = async (fell, m) => {
