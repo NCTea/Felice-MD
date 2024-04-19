@@ -55,8 +55,49 @@ module.exports = async (fell, m) => {
         if (isCmd) console.log("~> [CMD]", command, "from", pushname, "in", m.isGroup ? "Group Chat" : "Private Chat", '[' + args.length + ']');
 
         switch (command) {
-            case "menu":
-                m.reply("Hola")
+            case 'menu':
+                m.reply('Hola')
+                break;
+
+            default:
+                if (budy.startsWith('=>')) {
+                    if (!isCreator) return
+                    function Return(sul) {
+                        sat = JSON.stringify(sul, null, 2)
+                        bang = require('util').format(sat)
+                        if (sat == undefined) {
+                            bang = require('util').format(sul)
+                        }
+                        return m.reply(bang)
+                    }
+                    try {
+                        m.reply(require('util').format(eval(`(async () => { return ${budy.slice(3)} })()`)))
+                    } catch (e) {
+                        m.reply(String(e))
+                    }
+                }
+
+                if (budy.startsWith('>')) {
+                    if (!isCreator) return
+                    let kode = budy.trim().split(/ +/)[1]
+                    let teks
+                    try {
+                        teks = /await/i.test(kode) ? eval("(async() => { " + kode + " })()") : eval(kode)
+                    } catch (e) {
+                        teks = e
+                    } finally {
+                        await m.reply(require('util').format(teks))
+                    }
+                }
+
+                if (budy.startsWith('$')) {
+                    if (!isCreator) return
+                    exec(budy.slice(2), (err, stdout) => {
+                        if (err) return m.reply(`${err}`)
+                        if (stdout) return m.reply(stdout)
+                    })
+                }
+                break;
                 break;
         }
     } catch (err) {
